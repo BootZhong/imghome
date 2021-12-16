@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.bootzhong.imghome.mapper.ImgMapper">
+  <resultMap id="BaseResultMap" type="top.bootzhong.imghome.model.entity.Img">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="orgin_name" jdbcType="VARCHAR" property="orginName" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="size" jdbcType="DOUBLE" property="size" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="local_path" jdbcType="VARCHAR" property="localPath" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, orgin_name, `name`, `size`, `type`, local_path, `status`, create_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from img
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from img
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.bootzhong.imghome.model.entity.Img" useGeneratedKeys="true">
+    insert into img
+        (
+         orgin_name, `name`, `size`,
+         `type`, local_path, cloud_path, `status`
+         )
+    values
+        (
+         #{orginName}, #{name}, #{size},
+         #{type}, #{localPath}, #{cloudPath}, #{status}
+         )
+  </insert>
+  
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.bootzhong.imghome.model.entity.Img" useGeneratedKeys="true">
+    insert into img
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orginName != null">
+        orgin_name,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="size != null">
+        `size`,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="localPath != null">
+        local_path,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orginName != null">
+        #{orginName},
+      </if>
+      <if test="name != null">
+        #{name},
+      </if>
+      <if test="size != null">
+        #{size},
+      </if>
+      <if test="type != null">
+        #{type},
+      </if>
+      <if test="localPath != null">
+        #{localPath},
+      </if>
+      <if test="status != null">
+        #{status},
+      </if>
+      <if test="createDate != null">
+        #{createDate,
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.bootzhong.imghome.model.entity.Img">
+    update img
+    <set>
+      <if test="orginName != null">
+        orgin_name = #{orginName},
+      </if>
+      <if test="name != null">
+        `name` = #{name},
+      </if>
+      <if test="size != null">
+        `size` = #{size},
+      </if>
+      <if test="type != null">
+        `type` = #{type},
+      </if>
+      <if test="localPath != null">
+        local_path = #{localPath},
+      </if>
+      <if test="status != null">
+        `status` = #{status},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.bootzhong.imghome.model.entity.Img">
+    update img
+    set orgin_name = #{orginName},
+      `name` = #{name},
+      `size` = #{size},
+      `type` = #{type},
+      local_path = #{localPath},
+      `status` = #{status},
+      create_date = #{createDate
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

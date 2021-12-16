@@ -1,0 +1,10 @@
+server:
+  servlet:
+    context-path: /imghome
+  port: 8083
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
