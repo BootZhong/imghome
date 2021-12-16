@@ -20,6 +20,12 @@
     from img
     where id = #{id,jdbcType=BIGINT}
   </select>
+
+  <select id="selectByName" resultType="top.bootzhong.imghome.model.entity.Img">
+    select *from img
+    where name = #{imgName}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from img
     where id = #{id,jdbcType=BIGINT}

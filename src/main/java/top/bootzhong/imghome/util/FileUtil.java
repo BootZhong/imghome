@@ -10,7 +10,7 @@ public class FileUtil {
 
     public static String getSuffix(@Nullable String filename){
         assert filename != null && !"".equals(filename);
-        String[] split = filename.split(".");
-        return split.length > 1 ? split[split.length - 1] : "";
+        String[] split = filename.split("\\.");
+        return split.length > 1 ? "." + split[split.length - 1] : "";
     }
 }

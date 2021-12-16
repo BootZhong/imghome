@@ -14,6 +14,8 @@ import top.bootzhong.imghome.service.ImgService;
 import top.bootzhong.imghome.util.FileUtil;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.UUID;
 
 /**
@@ -58,4 +60,13 @@ public class ImgServiceImpl implements ImgService {
         }
     }
 
+    /**
+     * 获取图片信息
+     * @param imgName
+     * @return
+     */
+    @Override
+    public Img getImg(String imgName) {
+        return imgMapper.selectByName(imgName);
+    }
 }
